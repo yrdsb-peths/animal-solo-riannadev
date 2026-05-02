@@ -8,6 +8,9 @@ import greenfoot.*;
  */
 
 public class MyWorld extends World {
+    /**
+     * constructor for objects of class MyWorld. 
+     */
     public MyWorld() 
     {
         super(600, 400, 1);
@@ -19,7 +22,7 @@ public class MyWorld extends World {
     }
     
     /**
-     * Creat a new apple at random location at top of screen
+     * Create a new apple at random location at top of screen
      */
     
     public void createApple()
