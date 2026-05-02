@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The elephant, our hero.
+ * The Elephant, our hero.
  * 
  * @author (Rianna) 
  * @version (April 2026)
@@ -14,6 +14,16 @@ public class Elephant extends Actor
      */
     public void act()
     {
-        move(1);
+        if(Greenfoot.isKeyDown("left"))
+        {
+            move(-1);
+        }
+        else if(Greenfoot.isKeyDown("right"))
+        {
+            move(1);
+        }
+        
+        //Remove apple if elephant eats it 
+        removeTouching(Apple.class);
     }
 }
