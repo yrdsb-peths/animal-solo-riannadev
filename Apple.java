@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Food for our elephant
  * 
  * @author (Rianna) 
- * @version (April 2026)
+ * @version (Mar 2026)
  */
 public class Apple extends Actor
 {

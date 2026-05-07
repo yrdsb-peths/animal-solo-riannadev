@@ -4,7 +4,7 @@ import greenfoot.*;
  * The world our hero lives in 
  * 
  * @author Rianna
- * @version April 2026
+ * @version May 2026
  */
 
 public class MyWorld extends World 
@@ -19,7 +19,10 @@ public class MyWorld extends World
         super(600, 400, 1);
         
         Elephant elephant = new Elephant();
-        addObject(elephant, 300, 300);
+        addObject(elephant, 300, 200);
+        
+        Apple apple = new Apple();
+        addObject(apple, 300, 0);
         
         scoreLabel = new Label(0, 80);
         addObject(scoreLabel, 50, 50);
