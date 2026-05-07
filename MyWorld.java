@@ -19,6 +19,11 @@ public class MyWorld extends World
         //Create a new world with 600x400 cells with a cell size of 1x1 pixels
         super(600, 400, 1, false);
         
+        GreenfootImage bg = new GreenfootImage("background.png");
+        bg.scale(600, 400);
+        setBackground(bg);
+
+        
         //Create the elephnat object 
         Elephant elephant = new Elephant();
         addObject(elephant, 300, 200);
