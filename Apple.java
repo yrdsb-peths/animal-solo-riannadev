@@ -32,6 +32,6 @@ public class Apple extends Actor
     
     public void setSpeed(int spd)
     {
-        
+        speed = spd;
     }
 }
