@@ -52,7 +52,7 @@ public class TitleScreen extends World
         addObject(apple,510,69);
         apple.setLocation(547,181);
         apple.setLocation(532,108);
-        Label label2 = new Label("Use <-- and --> to Move", 40);
+        Label label2 = new Label("Use \u2190 and \u2192 to Move", 40);
         addObject(label2,309,263);
         label2.setLocation(302,244);
         label.setLocation(319,322);
@@ -62,3 +62,4 @@ public class TitleScreen extends World
         label.setLocation(292,317);
     }
 }
+
