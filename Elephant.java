@@ -13,16 +13,30 @@ public class Elephant extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     GreenfootSound elephantSound = new GreenfootSound("elephantSound.mp3");
-    GreenfootImage[] idle = new GreenfootImage[5];
+    GreenfootImage[] idleRight = new GreenfootImage[5];
+    GreenfootImage[] idleLeft = new GreenfootImage[5];
+
+    //direction of elephant
+    String facing = "right";
     
     //constructor  - the code that gets run one time when object is created
     public Elephant() 
     {
-        for(int i = 0; i < idle.length; i++)
+        for(int i = 0; i < idleRight.length; i++)
         {
-            idle[i] = new GreenfootImage("images/idle" + i + ".png");
+            idleRight[i] = new GreenfootImage("images/idle" + i + ".png");
+            idleRight[i].scale(100, 100);
         }
-        setImage(idle[0]);
+        
+        
+        for(int i = 0; i < idleLeft.length; i++)
+        {
+            idleLeft[i] = new GreenfootImage("images/idle" + i + ".png");
+            idleLeft[i].mirrorHorizontally();
+            idleLeft[i].scale(100, 100);
+        }
+        //Initial elephany image
+        setImage(idleRight[0]);
     }
     
     /**
@@ -31,8 +45,16 @@ public class Elephant extends Actor
     int imageIndex = 0;
     public void animateElephant()
     {
-        setImage(idle[imageIndex]);
-        imageIndex = imageIndex + 1 % idle.length;
+        if(facing.equals("right"))
+        {
+            setImage(idleRight[imageIndex]);
+            imageIndex = (imageIndex + 1) % idleRight.length;
+        }
+        else
+        {
+            setImage(idleLeft[imageIndex]);
+            imageIndex = (imageIndex + 1) % idleLeft.length;
+        }
     }
     
     public void act()
