@@ -3,57 +3,63 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * The Elephant, our hero.
  * 
- * @author (Rianna) 
- * @version (May 2026)
+ * @author Rianna
+ * @version May 2026
  */
 public class Elephant extends Actor
 {
-    /**
-     * Act - do whatever the Elephant wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     GreenfootSound elephantSound = new GreenfootSound("elephantSound.mp3");
+
     GreenfootImage[] idleRight = new GreenfootImage[5];
     GreenfootImage[] idleLeft = new GreenfootImage[5];
 
-    //direction of elephant
+    // Direction elephant is facing
     String facing = "right";
+
+    // Timer for animation
     SimpleTimer animationTimer = new SimpleTimer();
-    
-    //constructor  - the code that gets run one time when object is created
-    public Elephant() 
+
+    // Animation frame index
+    int imageIndex = 0;
+
+    /**
+     * Constructor
+     */
+    public Elephant()
     {
+        // Load right-facing images
         for(int i = 0; i < idleRight.length; i++)
         {
-            idleRight[i] = new GreenfootImage("images/idle" + i + ".png");
+            idleRight[i] = new GreenfootImage("idle" + i + ".png");
             idleRight[i].scale(100, 100);
         }
-        
-        
+
+        // Load left-facing images
         for(int i = 0; i < idleLeft.length; i++)
         {
-            idleLeft[i] = new GreenfootImage("images/idle" + i + ".png");
+            idleLeft[i] = new GreenfootImage("idle" + i + ".png");
             idleLeft[i].mirrorHorizontally();
             idleLeft[i].scale(100, 100);
         }
+
         animationTimer.mark();
-        
-        //Initial elephany image
+
+        // Starting image
         setImage(idleRight[0]);
     }
-    
+
     /**
-     * animate the elephant 
+     * Animate the elephant
      */
-    int imageIndex = 0;
     public void animateElephant()
     {
         if(animationTimer.millisElapsed() < 100)
         {
             return;
         }
+
         animationTimer.mark();
-        
+
         if(facing.equals("right"))
         {
             setImage(idleRight[imageIndex]);
@@ -65,40 +71,45 @@ public class Elephant extends Actor
             imageIndex = (imageIndex + 1) % idleLeft.length;
         }
     }
-    
+
+    /**
+     * Main act method
+     */
     public void act()
     {
         if(Greenfoot.isKeyDown("left"))
         {
-            move(-4);
+            setLocation(getX() - 4, getY());
             facing = "left";
         }
         else if(Greenfoot.isKeyDown("right"))
         {
-            move(4);
+            setLocation(getX() + 4, getY());
             facing = "right";
         }
-        
-        //Remove apple if elephant eats it 
+
+        // Eat apples
         eat();
-        
-        //animate the Elephant
+
+        // Animate elephant
         animateElephant();
     }
-    
+
     /**
-     * eat the apple and spawn new if an apple is eaten
+     * Eat the apple and create a new one
      */
     public void eat()
     {
         if(isTouching(Apple.class))
         {
             removeTouching(Apple.class);
+
             MyWorld world = (MyWorld) getWorld();
+
             world.createApple();
             world.increaseScore();
+
             elephantSound.play();
         }
-    }   
+    }
 }
-
