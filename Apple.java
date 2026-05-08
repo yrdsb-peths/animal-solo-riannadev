@@ -13,6 +13,7 @@ public class Apple extends Actor
         image.scale(40, 40);
         setImage(image);
     }
+    int speed = 1;
     public void act()
     {
         // apple falls downwards
@@ -27,5 +28,10 @@ public class Apple extends Actor
             world.gameOver();
             world.removeObject(this);
         }
+    }
+    
+    public void setSpeed(int spd)
+    {
+        
     }
 }
