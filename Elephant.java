@@ -48,6 +48,26 @@ public class Elephant extends Actor
         setImage(idleRight[0]);
     }
 
+    
+    public class SimpleTimer
+    {
+        private long lastMark;
+    
+        public SimpleTimer()
+        {
+            mark();
+        }
+    
+        public void mark()
+        {
+            lastMark = System.currentTimeMillis();
+        }
+    
+        public int millisElapsed()
+        {
+            return (int)(System.currentTimeMillis() - lastMark);
+        }
+    }
     /**
      * Animate the elephant
      */
@@ -57,7 +77,6 @@ public class Elephant extends Actor
         {
             return;
         }
-
         animationTimer.mark();
 
         if(facing.equals("right"))
