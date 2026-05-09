@@ -55,6 +55,13 @@ public class MyWorld extends World
         score++;
         scoreLabel.setValue(score);
         
+        //Add a you win label once player reaches 10 apples touched/eaten
+        if (score >= 10)
+        {
+            Label winLabel = new Label ("YOU WIN!!", 100);
+            addObject(winLabel, 300, 200);
+            Greenfoot.stop();
+        }
         if (score % 5 == 0)
         {
             level += 1;
