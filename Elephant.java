@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Elephant extends Actor
 {
+    // Create elephant sound instance
     GreenfootSound elephantSound = new GreenfootSound("elephantSound.mp3");
 
     GreenfootImage[] idleRight = new GreenfootImage[5];
